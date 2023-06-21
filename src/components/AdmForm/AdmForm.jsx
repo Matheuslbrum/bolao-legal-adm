@@ -42,7 +42,7 @@ function AdmForm() {
 
   return (
     <>
-      <Box p={4} maxWidth="500px" margin="0 auto">
+      <Box margin="0 auto" border="1px solid black" padding="20px" maxWidth="60%" alignItems='center' justifyContent='center'>
         <Switch
           isChecked={editingEnabled}
           onChange={() => setEditingEnabled(!editingEnabled)}
@@ -56,7 +56,7 @@ function AdmForm() {
 
         <Grid templateColumns="repeat(3, 1fr)" gap={6}>
           {admData.map((value, index) => (
-            <Box key={index} p={4} borderWidth={1} borderRadius="md">
+            <Box key={index} p={4} borderWidth={1} borderRadius="md" width='500px'>
               <Heading size="md" mb={2} color={"blue"}>
                 Configurações do bolão
               </Heading>

@@ -11,7 +11,8 @@ import {
   HStack,
   AlertIcon,
   Alert,
-  AlertDescription
+  AlertDescription,
+  Heading
 } from '@chakra-ui/react';
 import axios from 'axios';
 
@@ -86,7 +87,10 @@ function UserForm() {
   }, [])
 
   return (
-    <Box maxWidth="500px" margin="0 auto">
+    <Box margin="0 auto" border="1px solid black" padding="20px" maxWidth="60%">
+      <Heading size="md" mb={2} color={"blue"}>
+                Adicionar Apostador
+      </Heading>
       <FormControl display="flex" alignItems="center" justifyContent="flex-end" mb="2">
         <FormLabel htmlFor="disableSwitch" mb="0">
           Desabilitar

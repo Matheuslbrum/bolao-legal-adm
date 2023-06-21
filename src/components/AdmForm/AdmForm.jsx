@@ -15,15 +15,21 @@ function AdmForm() {
     }
   };
 
-  const handleInputChange = (index, event) => {
+  const handleInputChange = (index, field, value) => {
     const updatedData = [...admData];
-    updatedData[index] = event.target.value;
-    setAdmData(updatedData);
+    const parsedValue = parseFloat(value);
+    if (!isNaN(parsedValue)) {
+      updatedData[index] = { ...updatedData[index], [field]: parsedValue };
+      setAdmData(updatedData);
+    } else {
+      updatedData[index] = { ...updatedData[index], [field]: 0 };
+      setAdmData(updatedData);
+    }
   };
 
   const handleSave = async () => {
     try {
-      await axios.put('http://localhost:3000/adm', admData); // substitua pela sua URL da API para atualizar os valores
+      await axios.put('https://bolao-legal-api-production.up.railway.app/adm', admData); // substitua pela sua URL da API para atualizar os valores
       console.log('Valores atualizados com sucesso!');
     } catch (error) {
       console.log(error);
@@ -57,22 +63,22 @@ function AdmForm() {
               {editingEnabled ? (
                 <>
                 <Text>Porcentual do adm</Text>
-                <Input value={value.pool_admin_percentage} onChange={(event) => handleInputChange(index, event)} />
+                <Input value={value.pool_admin_percentage} onChange={(event) => handleInputChange(index, 'pool_admin_percentage', event.target.value)} />
                 <Text>Porcentagem do primeiro lugar</Text>
-                <Input value={value.first_prize_percentage} onChange={(event) => handleInputChange(index, event)} />
+                <Input value={value.first_prize_percentage} onChange={(event) => handleInputChange(index, 'first_prize_percentage', event.target.value)} />
                 <Text>Porcentagem do Segundo lugar</Text>
-                <Input value={value.second_prize_percentage} onChange={(event) => handleInputChange(index, event)} />
+                <Input value={value.second_prize_percentage} onChange={(event) => handleInputChange(index, 'second_prize_percentage', event.target.value)} />
                 <Text>Porcentagem das despesas</Text>
-                <Input value={value.expenses_percentage} onChange={(event) => handleInputChange(index, event)} />
+                <Input value={value.expenses_percentage} onChange={(event) => handleInputChange(index, 'expenses_percentage', event.target.value)} />
                 <Text>Placar errado</Text>
-                <Input value={value.completely_wrong_score} onChange={(event) => handleInputChange(index, event)} />
+                <Input value={value.completely_wrong_score} onChange={(event) => handleInputChange(index, 'completely_wrong_score', event.target.value)} />
                 <Text>Placar certo</Text>
-                <Input value={value.correct_score} onChange={(event) => handleInputChange(index, event)} />
+                <Input value={value.correct_score} onChange={(event) => handleInputChange(index, 'correct_score', event.target.value)} />
                 <Text>Placar com empate</Text>
-                <Input value={value.draw_score} onChange={(event) => handleInputChange(index, event)} />
+                <Input value={value.draw_score} onChange={(event) => handleInputChange(index, 'draw_score', event.target.value)} />
                 <Text>Placar errado mas acertou quem ganhou</Text>
-                <Input value={value.partially_wrong_score} onChange={(event) => handleInputChange(index, event)} />
-                </>
+                <Input value={value.partially_wrong_score} onChange={(event) => handleInputChange(index, 'partially_wrong_score', event.target.value)} />
+              </>
               ) : (
                 <>
                 <Text>Porcentual do adm</Text>

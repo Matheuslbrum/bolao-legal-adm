@@ -25,7 +25,7 @@ function UserForm() {
 
   const fetchScoreData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/score");
+      const response = await axios.get("https://bolao-legal-api-production.up.railway.app/score");
       setScoreData(response.data)
     } catch (error) {
       console.error('error', error);
@@ -38,17 +38,20 @@ function UserForm() {
 
   const handleNameChange = (e) => {
     setName(e.target.value);
+    console.log(e.target.value)
   };
 
   const handleTeamChange = (index, field, value) => {
     const updatedResults = [...bets];
     updatedResults[index] = { ...updatedResults[index], [field]: value };
+    console.log('team', value)
     setBets(updatedResults);
   };
 
   const handleResultChange = (index, value) => {
     const updatedResults = [...bets];
     updatedResults[index] = { ...updatedResults[index], result: value };
+    console.log('bets', value)
     setBets(updatedResults);
   };
 
@@ -68,7 +71,7 @@ function UserForm() {
       return;
     }
     try {
-      const response = await axios.post('http://localhost:3000/user', {
+      const response = await axios.post('https://bolao-legal-api-production.up.railway.app/user', {
         name,
         bets,
       });
@@ -114,19 +117,17 @@ function UserForm() {
                 isRequired
               >
                 {
-                  scoreData.length > 0 ?
-                  (
-                    scoreData.map((score) => (
-                      <>
-                      <option value=''>---------</option>
-                      <option value={score.team_one}>{score.team_one}</option>
-                      </>
-                    ))
-                  ) :
-                  (
-                    <option value="none">Sem time</option>
-                  )
-                }
+  scoreData.length > 0 ? (
+    <>
+      <option value=''>---------</option>
+      {scoreData.map((score) => (
+        <option key={score.id} value={score.team_one}>{score.team_one}</option>
+      ))}
+    </>
+  ) : (
+    <option value="none">Sem time</option>
+  )
+}
               </Select>
             </FormControl>
             <FormControl>
@@ -138,19 +139,17 @@ function UserForm() {
                 isRequired
               >
                                 {
-                  scoreData.length > 0 ?
-                  (
-                    scoreData.map((score) => (
-                      <>
-                      <option value=''>---------</option>
-                      <option value={score.team_two}>{score.team_two}</option>
-                      </>
-                    ))
-                  ) :
-                  (
-                    <option value="none">Sem time</option>
-                  )
-                }
+  scoreData.length > 0 ? (
+    <>
+      <option value=''>---------</option>
+      {scoreData.map((score) => (
+        <option key={score.id} value={score.team_two}>{score.team_two}</option>
+      ))}
+    </>
+  ) : (
+    <option value="none">Sem time</option>
+  )
+}
               </Select>
             </FormControl>
             <FormControl>

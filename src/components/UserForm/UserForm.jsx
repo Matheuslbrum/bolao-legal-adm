@@ -25,7 +25,7 @@ function UserForm() {
 
   const fetchScoreData = async () => {
     try {
-      const response = await axios.get("https://bolao-legal-api-production.up.railway.app/score");
+      const response = await axios.get("https://expressjs-server-production-085c.up.railway.app/score");
       setScoreData(response.data)
     } catch (error) {
       console.error('error', error);
@@ -71,7 +71,7 @@ function UserForm() {
       return;
     }
     try {
-      const response = await axios.post('https://bolao-legal-api-production.up.railway.app/user', {
+      const response = await axios.post('https://expressjs-server-production-085c.up.railway.app/user', {
         name,
         bets,
       });

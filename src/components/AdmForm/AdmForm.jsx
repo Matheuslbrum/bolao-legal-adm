@@ -8,7 +8,7 @@ function AdmForm() {
 
   const fetchAdmData = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/adm");
+      const response = await axios.get("https://expressjs-server-production-085c.up.railway.app/adm");
       setAdmData(response.data)
     } catch (error) {
       console.error('error', error);
@@ -29,7 +29,7 @@ function AdmForm() {
 
   const handleSave = async () => {
     try {
-      await axios.put('https://bolao-legal-api-production.up.railway.app/adm', admData); // substitua pela sua URL da API para atualizar os valores
+      await axios.put('https://expressjs-server-production-085c.up.railway.app/adm', admData); // substitua pela sua URL da API para atualizar os valores
       console.log('Valores atualizados com sucesso!');
     } catch (error) {
       console.log(error);

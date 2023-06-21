@@ -51,7 +51,7 @@ function ScoreForm() {
       return;
     }
     try {
-      const response = await axios.post('https://bolao-legal-api-production.up.railway.app/score', results);
+      const response = await axios.post('https://expressjs-server-production-085c.up.railway.app/score', results);
       setShowAlert(false)
     } catch (error) {
       console.error('Erro ao enviar os dados para a API:', error);

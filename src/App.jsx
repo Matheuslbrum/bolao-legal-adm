@@ -16,7 +16,7 @@ function App() {
 
   const displayResult = async() => {
     try {
-      const response = await axios.delete("https://expressjs-server-production-085c.up.railway.app/result/true");
+      const response = await axios.put("https://expressjs-server-production-085c.up.railway.app/result/true");
     } catch (error) {
       console.error('error', error);
     }
@@ -24,7 +24,7 @@ function App() {
 
   const removeResult = async() => {
     try {
-      const response = await axios.delete("https://expressjs-server-production-085c.up.railway.app/result/false");
+      const response = await axios.put("https://expressjs-server-production-085c.up.railway.app/result/false");
     } catch (error) {
       console.error('error', error);
     }
